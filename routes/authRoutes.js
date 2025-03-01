@@ -6,7 +6,7 @@ const User = require("../models/user");
 const router = express.Router();
 const SECRET_KEY = "yummysecret"; // Use .env file for real projects
 
-// ✅ Register Admin
+//  Register Admin
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -26,7 +26,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// ✅ Login Admin
+//  Login Admin
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -49,7 +49,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// ✅ Logout (Client-side: Remove Token)
+//  Logout (Client-side: Remove Token)
 router.post("/logout", (req, res) => {
   res.json({ message: "Logout successful!" });
 });
