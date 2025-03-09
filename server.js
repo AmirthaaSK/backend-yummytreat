@@ -32,7 +32,17 @@ app.get("/", (req, res) => {
 app.use((req, res) => {
   res.status(404).json({ message: "❌ API Not Found" });
 });
+// Serve frontend static files (after building React app)
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
+
+// Start Server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 // Global Error Handling Middleware
 app.use((err, req, res, next) => {
   console.error(`❌ Server Error: ${err.message}`);
